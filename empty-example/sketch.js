@@ -1,28 +1,32 @@
-function Circulo(v2,v1,fill)
+class Circulo
 {
-this.v1 = v1; 
-this.v2 = v2;
-this.fill = fill;
-
-this.dibuja = function()
-{
-  ellipse(this.v1.x,this.v1.y, this.v2.x, this.v2.y, fill);
+  constructor(v1,ancho,alto,fill)
+  {
+    this.v1 = v1; 
+    this.ancho = ancho;
+    this.alto = alto;
+    this.fill = fill;
+  }
+  dibuja(fill)
+  {
+    fill(this.fill);
+    ellipse(this.v1.x,this.v1.y, this.alto, this.ancho);
+  }
 }
-
-}
-
-var vect1 = CreateVector(80,80);
-var vect2 = CreateVector(150,150);
-var Circulo1 = new Circulo(vect1,vect2,color(245,235,23));
+var vect1;
+var circulo1;
 
 function setup() {
   // put setup code here
-  createCanvas(1000, 1000);
-
+  createCanvas(640, 480);
+  vect1 = createCanvas(80,80);
+  circulo1 = new Circulo(vect1,55,55,color('red'));
 }
-
-function draw() {
-  // put drawing code here let c = color (255, 204, 0) if (mouseIsPressed) {  fill(c)} else {   fill(255);}triangle(mouseX, mouseY, 80, 80,200,200);
-
-Circulo.dibuja();
+function mouseClicked()
+{
+  circulo1.dibuja(fill);
+}
+function draw() 
+{
+circulo1.dibuja(fill);
 }
